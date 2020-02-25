@@ -1,10 +1,16 @@
+const path = require("path");
+function resolve(dir) {
+    return path.join(__dirname, dir);
+}
+
 module.exports = {
+
     devServer:{
         host:'localhost',
         port:8080,
         proxy:{
             '/api':{
-                target:'http://mall-pre.springboot.cn',
+                target:'https://www.imooc.com',
                 changeOrigin:true,
                 pathRewrite:{
                     '/api':''
@@ -18,6 +24,12 @@ module.exports = {
     // lintOnSave:false,
     productionSourceMap:true,
     chainWebpack:(config)=>{
+        config.resolve.alias
+            .set("@", resolve("src"))
+            // .set("assets", resolve("src/assets"))
+            // .set("components", resolve("src/components"))
+            // .set("base", resolve("baseConfig"))
+            .set("public", resolve("public"));
         config.plugins.delete('prefetch');
     }
 }
