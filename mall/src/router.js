@@ -1,16 +1,17 @@
-import Vue from "vue"
-import Router from "vue-router"
-import Home from "@/pages/home"
-import Index from "@/pages/index"
-import Product from "@/pages/product"
-import Detail from "@/pages/detail"
-import Cart from "@/pages/cart"
-import Order from '@/pages/order'
-import OrderConfirm from '@/pages/orderConfirm'
-import OrderList from '@/pages/orderList'
-import OrderPay from '@/pages/orderPay'
-import AliPay from '@/pages/alipay'
-Vue.use(Router)
+import Vue from 'vue'
+import Router from 'vue-router'
+import Home from './pages/home'
+import Login from './pages/login'
+import Index from './pages/index'
+import Product from './pages/product'
+import Detail from './pages/detail'
+import Cart from './pages/cart'
+import Order from './pages/order'
+import OrderConfirm from './pages/orderConfirm'
+import OrderList from './pages/orderList'
+import OrderPay from './pages/orderPay'
+import AliPay from './pages/alipay'
+Vue.use(Router);
 
 export default new Router({
     routes:[
@@ -21,21 +22,24 @@ export default new Router({
             redirect:'/index',
             children:[
                 {
-                    path:'index',
-                    name:'index',
-                    component:Index,
-                },
-                {
-                    path:'product/:id',
-                    name:'product',
-                    component:Product
-                },
-                {
-                    path: 'detail/:id',
+                    path: '/index',
+                    name: 'index',
+                    component: Index,
+                }, {
+                    path: '/product/:id',
+                    name: 'product',
+                    component: Product,
+                }, {
+                    path: '/detail/:id',
                     name: 'detail',
                     component: Detail,
                 }
             ]
+        },
+        {
+            path: '/login',
+            name: 'login',
+            component: Login
         },
         {
             path: '/cart',
@@ -70,4 +74,4 @@ export default new Router({
             ]
         }
     ]
-})
+});
